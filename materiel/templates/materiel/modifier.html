@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <title>Modifier matériel</title>
+
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+</head>
+
+<body class="bg-light">
+
+<div class="container mt-4">
+
+    <h1> Modifier matériel</h1>
+
+    <form method="POST" class="card p-3 mt-3">
+        {% csrf_token %}
+
+        {{ form.as_p }}
+
+        <button class="btn btn-primary">Modifier</button>
+
+        <a href="{% url 'materiel_list' %}" class="btn btn-secondary">
+            Retour
+        </a>
+    </form>
+
+</div>
+
+</body>
+</html>

@@ -12,7 +12,22 @@
 
 <div class="container mt-4">
 
-    <h1 class="mb-4"> Liste du matériel</h1>
+    <!-- NAVBAR SIMPLE -->
+    <div class="d-flex justify-content-between align-items-center mb-4">
+
+        <h1> Liste du matériel</h1>
+
+        <div>
+            <a href="{% url 'dashboard' %}" class="btn btn-secondary btn-sm">
+                Dashboard
+            </a>
+
+            <a href="{% url 'logout' %}" class="btn btn-dark btn-sm">
+                Logout
+            </a>
+        </div>
+
+    </div>
 
     <!-- Bouton ajouter -->
     <a href="{% url 'ajouter_materiel' %}" class="btn btn-success mb-3">
@@ -37,19 +52,13 @@
                 <a href="{% url 'supprimer_materiel' m.id %}" class="btn btn-danger btn-sm">
                     Supprimer
                 </a>
-            </div>
-            <div>
+
                 <a href="{% url 'affecter_materiel' %}" class="btn btn-warning btn-sm">
                     Affecter
                 </a>
 
                 <a href="{% url 'reparation_materiel' %}" class="btn btn-info btn-sm">
                     Réparer
-                </a>
-            </div>
-            <div>
-                <a href="{% url 'dashboard' %}" class="btn btn-secondary btn-sm">
-                    Dashboard
                 </a>
             </div>
 

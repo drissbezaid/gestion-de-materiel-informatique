@@ -123,7 +123,7 @@ def logout_view(request):
     messages.success(request, "deconnexion réussie.")
     return redirect('login')
 
-
+#driss crapa reda 9rida bizyane bizon
        
     
 

@@ -5,25 +5,73 @@
     <title>Modifier matériel</title>
 
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+
+    <style>
+        body {
+            background: linear-gradient(135deg, #eef2f7, #d9e4f5);
+        }
+
+        .card {
+            border-radius: 15px;
+        }
+
+        .form-title {
+            font-weight: bold;
+            color: #333;
+        }
+
+        .btn {
+            border-radius: 10px;
+        }
+
+        input, select, textarea {
+            border-radius: 10px !important;
+            padding: 10px;
+        }
+
+        input:focus, select:focus, textarea:focus {
+            border-color: #0d6efd;
+            box-shadow: 0 0 5px rgba(13, 110, 253, 0.3);
+        }
+    </style>
 </head>
 
-<body class="bg-light">
+<body>
 
-<div class="container mt-4">
+<div class="container d-flex justify-content-center align-items-center vh-100">
 
-    <h1> Modifier matériel</h1>
+    <div class="col-md-6">
 
-    <form method="POST" class="card p-3 mt-3">
-        {% csrf_token %}
+        <div class="card shadow-lg p-4">
 
-        {{ form.as_p }}
+            <h3 class="text-center form-title mb-4">
+                 Modifier un matériel
+            </h3>
 
-        <button class="btn btn-primary">Modifier</button>
+            <form method="POST">
+                {% csrf_token %}
 
-        <a href="{% url 'materiel_list' %}" class="btn btn-secondary">
-            Retour
-        </a>
-    </form>
+                <!-- Form Django -->
+                {{ form.as_p }}
+
+                <!-- Buttons -->
+                <div class="d-flex justify-content-between mt-4">
+
+                    <a href="{% url 'materiel_list' %}" class="btn btn-outline-secondary">
+                        Retour
+                    </a>
+
+                    <button class="btn btn-primary px-4">
+                         Modifier
+                    </button>
+
+                </div>
+
+            </form>
+
+        </div>
+
+    </div>
 
 </div>
 

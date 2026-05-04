@@ -6,5 +6,10 @@ class MaterielForm(forms.ModelForm):
         model = Materiel
         fields = '__all__'
         widgets = {
-            'date_achat': forms.DateInput(attrs={'type': 'date'})
+            'date_achat': forms.DateInput(attrs={'type': 'date'}),
+            'description': forms.Textarea(attrs={
+                'class': 'form-control',
+                'placeholder': 'Ajouter une description...',
+                'rows': 4
+            })
         }

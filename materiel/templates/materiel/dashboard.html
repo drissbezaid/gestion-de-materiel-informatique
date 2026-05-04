@@ -5,78 +5,114 @@
     <title>Dashboard</title>
 
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+
+    <style>
+        body {
+            background: linear-gradient(135deg, #eef2f7, #d9e4f5);
+        }
+
+        .card {
+            border-radius: 15px;
+            border: none;
+        }
+
+        .stat-card {
+            transition: 0.3s;
+        }
+
+        .stat-card:hover {
+            transform: translateY(-5px);
+        }
+
+        .icon {
+            font-size: 30px;
+        }
+
+        .btn {
+            border-radius: 10px;
+        }
+    </style>
 </head>
 
-<body class="bg-light">
+<body>
 
-<div class="container mt-4">
+<div class="container mt-5">
 
-    <h1> Dashboard Gestion Matériel</h1>
+    <h2 class="mb-4 fw-bold">
+         Dashboard Gestion Matériel
+    </h2>
 
-    <div class="row mt-4">
+    <!-- Stats principales -->
+    <div class="row g-4">
 
         <div class="col-md-3">
-            <div class="card p-3 text-center">
-                <h5> Matériel</h5>
-                <h2>{{ total_materiel }}</h2>
+            <div class="card stat-card shadow p-3 text-center">
+                <div class="icon"></div>
+                <h6 class="mt-2">Matériel</h6>
+                <h2 class="fw-bold">{{ total_materiel }}</h2>
             </div>
         </div>
 
         <div class="col-md-3">
-            <div class="card p-3 text-center">
-                <h5> Personnel</h5>
-                <h2>{{ total_personnel }}</h2>
+            <div class="card stat-card shadow p-3 text-center">
+                <div class="icon"></div>
+                <h6 class="mt-2">Personnel</h6>
+                <h2 class="fw-bold">{{ total_personnel }}</h2>
             </div>
         </div>
 
         <div class="col-md-3">
-            <div class="card p-3 text-center">
-                <h5> Affectations</h5>
-                <h2>{{ total_affectations }}</h2>
+            <div class="card stat-card shadow p-3 text-center">
+                <div class="icon"></div>
+                <h6 class="mt-2">Affectations</h6>
+                <h2 class="fw-bold">{{ total_affectations }}</h2>
             </div>
         </div>
 
         <div class="col-md-3">
-            <div class="card p-3 text-center">
-                <h5> Réparations</h5>
-                <h2>{{ total_reparations }}</h2>
+            <div class="card stat-card shadow p-3 text-center">
+                <div class="icon"></div>
+                <h6 class="mt-2">Réparations</h6>
+                <h2 class="fw-bold">{{ total_reparations }}</h2>
             </div>
         </div>
 
     </div>
 
-    <hr>
+    <!-- Statut -->
+    <h4 class="mt-5 mb-3"> Statut du matériel</h4>
 
-    <h3> Statut du matériel</h3>
-
-    <div class="row">
+    <div class="row g-4">
 
         <div class="col-md-4">
-            <div class="card p-3 text-center bg-success text-white">
-                <h5> Disponible</h5>
+            <div class="card shadow text-center p-3 bg-success text-white">
+                <h6>Disponible</h6>
                 <h2>{{ materiel_disponible }}</h2>
             </div>
         </div>
 
         <div class="col-md-4">
-            <div class="card p-3 text-center bg-danger text-white">
-                <h5> Affecté</h5>
+            <div class="card shadow text-center p-3 bg-danger text-white">
+                <h6>Affecté</h6>
                 <h2>{{ materiel_affecte }}</h2>
             </div>
         </div>
 
         <div class="col-md-4">
-            <div class="card p-3 text-center bg-warning text-white">
-                <h5> Réparation</h5>
+            <div class="card shadow text-center p-3 bg-warning text-white">
+                <h6>Réparation</h6>
                 <h2>{{ materiel_reparation }}</h2>
             </div>
         </div>
 
     </div>
 
-    <a href="{% url 'materiel_list' %}" class="btn btn-primary mt-4">
-        Voir matériel
-    </a>
+    <!-- Action -->
+    <div class="mt-5 text-center">
+        <a href="{% url 'materiel_list' %}" class="btn btn-primary px-4">
+             Voir tout le matériel
+        </a>
+    </div>
 
 </div>
 

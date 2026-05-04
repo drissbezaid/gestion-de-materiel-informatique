@@ -1,6 +1,7 @@
 from django.urls import path
 from . import views
 urlpatterns=[
+    path('admin/', views.admin, name='admin'),
     path('materiel/', views.materiel_list, name='materiel_list'),
     path('materiel/ajouter/', views.ajouter_materiel, name='ajouter_materiel'),
     path('materiel/modifier/<int:pk>/', views.modifier_materiel, name='modifier_materiel'),

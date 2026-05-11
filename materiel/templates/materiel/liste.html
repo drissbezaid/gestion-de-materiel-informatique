@@ -28,6 +28,7 @@
 
         .badge {
             font-size: 0.8rem;
+            padding: 8px 12px;
         }
     </style>
 </head>
@@ -69,59 +70,106 @@
                 <tr>
                     <th>#</th>
                     <th>Nom</th>
-                    <th>Référence</th>
                     <th>Statut</th>
+                    <th>État</th>
                     <th class="text-center">Actions</th>
                 </tr>
             </thead>
 
             <tbody>
+
                 {% for m in materiels %}
                 <tr>
+
                     <td>{{ forloop.counter }}</td>
 
-                    <td><strong>{{ m.nom }}</strong></td>
-
-                    <td>{{ m.reference }}</td>
-
-                    <!-- Exemple statut (à adapter selon ton modèle) -->
                     <td>
-                        {% if m.etat == "disponible" %}
-                            <span class="badge bg-success">Disponible</span>
-                        {% elif m.etat == "affecte" %}
-                            <span class="badge bg-danger">Affecté</span>
-                        {% else %}
-                            <span class="badge bg-warning text-dark">Réparation</span>
-                        {% endif %}
+                        <strong>{{ m.nom }}</strong>
                     </td>
 
+                    <!-- STATUT -->
+                    <td>
+
+                        {% if m.statut == "disponible" %}
+
+                            <span class="badge bg-success">
+                                {{ m.get_statut_display }}
+                            </span>
+
+                        {% elif m.statut == "affecté" %}
+
+                            <span class="badge bg-danger">
+                                {{ m.get_statut_display }}
+                            </span>
+
+                        {% elif m.statut == "en réparation" %}
+
+                            <span class="badge bg-warning text-dark">
+                                {{ m.get_statut_display }}
+                            </span>
+
+                        {% endif %}
+
+                    </td>
+
+                    <!-- ETAT -->
+                    <td>
+
+                        {% if m.etat == "en service" %}
+
+                            <span class="badge bg-primary">
+                                {{ m.get_etat_display }}
+                            </span>
+
+                        {% elif m.etat == "en panne" %}
+
+                            <span class="badge bg-dark">
+                                {{ m.get_etat_display }}
+                            </span>
+
+                        {% elif m.etat == "en réparation" %}
+
+                            <span class="badge bg-warning text-dark">
+                                {{ m.get_etat_display }}
+                            </span>
+
+                        {% endif %}
+
+                    </td>
+
+                    <!-- ACTIONS -->
                     <td class="text-center">
 
                         <a href="{% url 'modifier_materiel' m.id %}" class="btn btn-primary btn-sm">
-                            modifier
+                             Modifier
                         </a>
 
                         <a href="{% url 'supprimer_materiel' m.id %}" class="btn btn-danger btn-sm">
-                            supprimer
+                             Supprimer
                         </a>
 
                         <a href="{% url 'affecter_materiel' %}" class="btn btn-warning btn-sm">
-                            affecter
+                             Affecter
                         </a>
 
                         <a href="{% url 'reparation_materiel' %}" class="btn btn-info btn-sm">
-                            réparer
+                             Réparer
                         </a>
 
                     </td>
+
                 </tr>
+
                 {% empty %}
+
                 <tr>
                     <td colspan="5" class="text-center text-muted">
                         Aucun matériel trouvé
                     </td>
                 </tr>
+
                 {% endfor %}
+
             </tbody>
 
         </table>
